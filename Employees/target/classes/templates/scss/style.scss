@@ -1,0 +1,130 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    border: 0;
+    color: #333;
+}
+
+// variables
+$blau: rgb(57, 100, 164);
+
+// Codi
+body {
+    max-width: 800px;
+    margin: auto;
+    padding: 1em;
+    background-color: #f7f7f7;
+    opacity: 0.9;
+    background-image: linear-gradient(0deg, #f7f7f7 50%, rgba(57, 100, 163, 0.09) 50%);
+    background-size: 10px 10px;
+}
+
+main {
+    h1 {
+        padding: 1.2em;
+        text-align: center;
+        font-size: 1.8em;
+        color: $blau;
+        background-color: #fff;
+        border-radius: .5em;
+        margin-bottom: 1em;
+    }
+
+    // Texte No Employee
+    #no-empl {
+        display: none;
+    }
+
+    // Tabla
+    #contenedor-tabla {
+        width: 100%;
+        margin-bottom: 2em;
+
+        // Capçalera del llistat
+        .encabezado {
+            display: grid;
+            grid-template-columns: 1fr 2fr 3fr 2fr;
+            grid-template-rows: auto;
+            grid-gap: 0px;
+            background-color: $blau;
+            border-top-left-radius: .5em;
+            border-top-right-radius: .5em;
+
+            h2 {
+                margin: 0;
+                padding: 10px 0 10px 12px;
+                font-size: 1.1em;
+                color: #fff;
+            }
+        }
+
+        // Línea de dades del llistat
+        .linea-datos {
+            display: grid;
+            grid-template-columns: 1fr 2fr 3fr 2fr;
+            grid-template-rows: auto;
+            grid-gap: 0px;
+
+            &:nth-child(even) {
+                background-color: lighten($blau, 50%);
+            }
+
+            &:nth-child(odd) {
+                background-color: #fff;
+            }
+
+            &:last-child {
+                border-bottom-right-radius: .5em;
+                border-bottom-left-radius: .5em;
+            }
+
+            p {
+                margin: 0;
+                padding: 6px 0 6px 12px;
+                font-size: 1em;
+                border-right: dotted 2px #fff;
+
+                &:last-child {
+                    border-right: solid 0 $blau;
+                }
+            }
+        }
+    }
+
+    // FORMULARI
+    #contorn-form {
+        padding: 1em;
+        background-color: #fff;
+        border-radius: .5em;
+
+        h2 {
+            margin: 0;
+            padding: 0 0 10px 0;
+            font-size: 1.1em;
+            text-align: center;
+            color: $blau;
+            border-bottom: solid 2px lighten($blau, 50%);
+        }
+
+        #formulari {
+            margin-top: 1em;
+
+            .btn {
+                margin-top: 1.5em;
+                padding: .5em 4em;
+                color: #fff;
+                background-color: $blau;
+                border-radius: 50px;
+                max-width: 200px;
+                transition: .25s all ease-in-out;
+
+                &:hover {
+                    background-color: lighten($blau, 10%);
+                    transform: scale(1.08);
+                }
+            }
+        }
+    }
+}

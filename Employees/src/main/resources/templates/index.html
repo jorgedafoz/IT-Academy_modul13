@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es-ES">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>LISTADO DE EMPLEADOS</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link href="style.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		<main>
+			<!-- TITOL -->
+			<H1>Employees List</H1>
+			<!-- TAULA -->
+			<!-- Contorn Taula -->
+			<section id="contenedor-tabla">
+				<!-- Capçalera Taula -->
+				<div class="encabezado">
+					<h2>Id</h2>
+					<h2>Name</h2>
+					<h2>Job</h2>
+					<h2>Salary</h2>
+				</div>
+				<!-- Dades Taula -->
+				<div class="linea-datos" th:each="employee : ${employees}">
+					<p th:text="${employee.id}"></p>
+					<p th:text="${employee.name}"></p>
+					<p th:text="${employee.job}"></p>
+					<p th:text="${employee.salary}"></p>
+				</div>
+			</section>
+			<!-- Alerta quan no hi han employees -->
+			<div id="no-empl" th:if="${employees.empty}">
+				<p> No Employees Available </p>
+			</div>
+			<!-- FORMULARI Add employee -->
+			<section id="contorn-form">
+				<h2>Data Panel</h2>
+                <!-- Aquí he modificat el 'th:action="${action}"' i he posat el que hi ha just aquí abaix -->
+				<form id="formulari" th:action="@{/createEmployee}" th:object="${employee}" method="post" class="align-items-center d-flex flex-column justify-content-center">
+					<div class="row">
+						<div class="col mb-3">
+							<label for="formInput1" class="form-label">Id</label>
+							<input type="text" name="formInput1"  class="form-control" id="formInput1" placeholder="0000">
+						</div>
+						<div class="col mb-3">
+							<label for="formInputJob" class="form-label">Job</label>
+							<input type="text" name="formInputJob"  class="form-control" id="formInputJob" placeholder="Your Job">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col mb-3">
+							<label for="formInputName" class="form-label">Name</label>
+							<input type="text" name="formInputName" th:field="*{formInputName}" class="form-control" id="formInputName" placeholder="Your Name">
+						</div>
+						<div class="col mb-3">
+							<label for="formInputSalary" class="form-label">Salary</label>
+							<input type="text" name="formInputSalary" th:field="*{formInputSalary}" class="form-control" id="formInputSalary" placeholder="Enter Your Salary in €">
+						</div>
+					</div>
+					<button th:href="@{/edit/{id}(id=${employee.id})}" type="submit" value="submit" class="btn" >ADD</button>
+				</form>
+			</section>
+		</main>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	</body>
+</html>

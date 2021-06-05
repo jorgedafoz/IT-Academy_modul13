@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>LISTADO DE EMPLEADOS</title>
+</head>
+<body>
+<H1>LISTADO DE empleados</H1>
+	<!-- Contorno de tabla -->
+	<div id="contenedor-datos">
+		<!-- encabezado -->
+		<div class="encabezado">
+			<h2>Id</h2>
+			<h2>Name</h2>
+			<h2>Job</h2>
+			<h2>Salary</h2>
+		</div>
+		<!-- Datos de tabla -->
+		<div class="linea-datos">
+			<p th:text="${employee.id}"></p>
+			<p th:text="${employee.name}"></p>
+			<p th:text="${employee.job}"></p>
+			<p th:text="${employee.salary}"></p>
+		</div>	
+	</div>
+	
+	<!-- Alerta quan no hi han employees -->
+	<div th:if="${employee.empty}">
+	     <p> No Employees Available </p>
+	</div>
+	
+	<form th:action="${action}" method="post">
+			<br>ID: <input type=text name=id th:value="${employee?.id}">
+			NAME: <input type=text name=titulo th:value="${employee?.name}">
+			JOB: <input type=text name=autor th:value="${employee?.job}"><br>
+			SALARY: <input type=text name=editorial th:value="${employee?.salary}">
+			
+			<input type=submit name=submit th:value="${boton}">  
+		</form>
+		
+</body>
+</html>
+
+
+		
